@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep  2 12:00:59 2022
+
+@author: Manuel Berto
+"""
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome("chromedriver.exe")
+driver.get("http://localhost:8119")
+elemento1 = driver.find_element(By.ID, "user")
+elemento1.clear()
+elemento1.send_keys("root")
+elemento2 = driver.find_element(By.NAME, "pass")
+elemento2.clear()
+elemento2.send_keys("password")
+elemento2.submit()
+driver.get("http://localhost:8119")
+driver.execute_script('document.querySelector("#CreateTicketInQueue > div.create-wide > input").click()')
+elemento3 = driver.find_element(By.XPATH, '//*[@id="TitleBox--_Ticket_Create_html--messagedetails----Q3JlYXRlIGEgbmV3IHRpY2tldCBpbiBHZW5lcmFs---0"]/div/div/div[4]/div[2]/input')
+elemento3.click()
+elemento3.send_keys('Pruebaaa')
+elemento3.submit()
+
+time.sleep(20)
+
+driver.close()
+
